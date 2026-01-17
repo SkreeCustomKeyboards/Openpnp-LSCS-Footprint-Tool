@@ -91,7 +91,6 @@ Use File → Export BOM Template to create a sample file.
 
 ## Links
 
-- GitHub: https://github.com/SkreeCustomKeyboards/Openpnp-LSCS-Footprint-Tool
 - Report issues: https://github.com/SkreeCustomKeyboards/Openpnp-LSCS-Footprint-Tool/issues
 - OpenPnP Documentation: https://github.com/openpnp/openpnp/wiki
 
