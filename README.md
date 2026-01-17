@@ -99,6 +99,7 @@ Use File → Export BOM Template to create a sample file.
 Created by Skree LLC - Marshall Somerville
 
 Claude Code for all the heavy lifting with Python
+
 Footprint data is retrieved from LCSC/EasyEDA and remains the property of LCSC and its respective rights holders.
 
 ## License
