@@ -5,7 +5,35 @@ All notable changes to OpenPnP Footprint Manager will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.2.0] - 2025-01-16
+## [0.2.1] - Unreleased
+
+### Fixed
+- **CSV parsing failures** - Fixed BOM parser incorrectly treating comma-separated CSV files as tab-separated
+  - Parser was hardcoded to use tab separator for all CSV files
+  - Now tries comma separator first (most common), then tab and semicolon
+  - Added support for multiple encoding/separator combinations
+- **UTF-16 encoding error** - Fixed "UTF-16 stream does not start with BOM" error
+  - Changed encoding priority to try UTF-8 first before UTF-16
+  - Standard CSV files now parse correctly
+- **JLCPCB column name support** - Added "JLCPCB Part #" and variations to recognized LCSC column names
+  - JLCPCB and LCSC use the same part numbering system
+  - Now recognizes: "JLCPCB Part", "JLCPCB Part #", "JLCPCB", "JLCPCB#"
+
+### Improved
+- **Enhanced CSV format compatibility**
+  - Added semicolon separator support (European CSV format)
+  - Added cp1252 encoding support (Windows default)
+  - Better handling of extra whitespace in column names
+  - Skip empty rows automatically
+  - Improved NA/null value handling
+  - Validates that parsed files contain actual data
+- **Better column name detection**
+  - Added more column name variations: "Component", "Description", "Part Number", "PCB Footprint"
+  - Case-insensitive matching with whitespace trimming
+  - More flexible column header recognition
+- **Error messages** - More descriptive messages when CSV parsing fails
+
+## [0.2.0] - 2025-01-29
 
 ### Fixed
 - **CRITICAL: Y-axis coordinate inversion** - Fixed footprint orientation bug where pads were mirrored vertically

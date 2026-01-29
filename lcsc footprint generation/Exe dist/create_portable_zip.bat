@@ -22,6 +22,7 @@ echo Copying application files...
 xcopy /E /I /Y "..\src" "%DIST_NAME%\src"
 copy "..\main.py" "%DIST_NAME%\"
 copy "..\README.md" "%DIST_NAME%\"
+copy "..\LICENSE" "%DIST_NAME%\"
 copy "..\CLAUDE.md" "%DIST_NAME%\"
 
 REM Copy dist folder files

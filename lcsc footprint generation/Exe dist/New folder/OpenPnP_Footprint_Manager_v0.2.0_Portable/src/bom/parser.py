@@ -28,7 +28,7 @@ class BomParser:
         "reference": ["Reference", "Ref", "Designator", "RefDes"],
         "value": ["Value", "Val", "Part Value", "Name"],
         "footprint": ["FOOTPRINT-NAME", "Footprint", "Package", "Case"],
-        "lcsc": ["supplier part", "LCSC", "LCSC Part", "LCSC#", "JLCPCB Part", "JLCPCB Part #", "JLCPCB", "MPN", "Manufacturer Part"]
+        "lcsc": ["supplier part", "LCSC", "LCSC Part", "LCSC#", "MPN", "Manufacturer Part"]
     }
     
     def __init__(self, 
@@ -68,25 +68,15 @@ class BomParser:
         
         try:
             if suffix == ".csv":
-                # Try different encodings and separators for CSV files
-                configs = [
-                    ('utf-8', ','),
-                    ('utf-8', '\t'),
-                    ('utf-16', '\t'),
-                    ('utf-16-le', '\t'),
-                    ('latin-1', ','),
-                ]
+                # Try different encodings for CSV files
+                encodings = ['utf-16', 'utf-16-le', 'utf-8', 'latin-1']
                 df = None
                 last_error = None
 
-                for encoding, separator in configs:
+                for encoding in encodings:
                     try:
-                        df = pd.read_csv(filepath, encoding=encoding, sep=separator)
-                        # Check if we got valid columns
-                        if len(df.columns) > 1:
-                            break
-                        else:
-                            df = None
+                        df = pd.read_csv(filepath, encoding=encoding, sep='\t')
+                        break
                     except (UnicodeDecodeError, pd.errors.ParserError) as e:
                         last_error = e
                         continue

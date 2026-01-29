@@ -1,0 +1,15 @@
+# OpenPnP Footprint Manager - Runtime Dependencies Only
+# This file contains only the dependencies needed to run the application
+
+# GUI Framework
+PyQt6>=6.4.0
+
+# HTTP Client
+httpx>=0.24.0
+
+# XML Parsing
+lxml>=4.9.0
+
+# BOM File Parsing
+pandas>=2.0.0
+openpyxl>=3.1.0
